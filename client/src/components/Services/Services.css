@@ -39,7 +39,12 @@
 /* right sided */
 .cards {
   position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  
 }
+
 .cards > * {
   position: absolute;
 }
@@ -73,3 +78,4 @@
     position: static;
   }
 }
+

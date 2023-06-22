@@ -1,4 +1,4 @@
-.card {
+/*.card {
   width: 10rem;
   height: 13rem;
   position: absolute;
@@ -40,148 +40,129 @@
 
 
 
-
+/*
 @media screen and (max-width: 480px){
   .card{
     width: auto;
   }
+}*/.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  height: auto; /* Adjust this value based on your layout */
+}
+
+.card {
+  width: 10rem;
+  height: 13rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.26);
+  border: 7px solid var(--orangeCard);
+  box-shadow: var(--boxShadow);
+  border-radius: 20px;
+  padding: 0 26px 2rem 26px;
+  transition: width 0.3s ease, height 0.3s ease;
+  overflow: hidden;
 }
 
 
-.h1 {
-  margin: 100
+.card.open {
+  width: 50%; /* Adjust the width as needed */
+  height: 50%; /* Adjust the height as needed */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  backdrop-filter: blur(10px); /* Apply a blur effect to the background */
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the background color and transparency as needed */
 }
 
-.CompactCard {
-    display: flex;
-    flex: 1;
-    height: 7rem !important;
-    border-radius: 0.7rem;
-    color: white;
-    padding: 1rem;
-    position: relative;
-    cursor: pointer;
-  }
-  .CompactCard:hover {
-    box-shadow: none !important;
-  }
-  
-  /* radial bar */
-  .radialBar {
-    flex: 1 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    gap: 1rem;
-  }
-  .CircularProgressbar {
-    width: 4rem !important;
-    overflow: visible;
-  }
-  .CircularProgressbar-path {
-    stroke: white !important;
-    stroke-width: 12px !important;
-    filter: drop-shadow(2px 4px 6px white);
-  }
-  .CircularProgressbar-trail {
-    display: none;
-  }
-  .CircularProgressbar-text {
-    fill: white !important;
-  }
-  
-  .radialBar > span {
-    font-size: 17px;
-    font-weight: bold;
-  }
-  
-  /* sideDetail*/
-  .detail {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-between;
-  }
-  
-  .detail > span:nth-child(2) {
-    font-size: 22px;
-    font-weight: bold;
-  }
-  .detail > span:nth-child(3) {
-    font-size: 12px;
-  }
-  
-  /* ExpandedCard */
-  .ExpandedCard {
-    position: absolute;
-    width: 60%;
-    height: 70vh;
-    z-index: 9;
-    left: 13rem;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    padding: 1rem;
-    font-size: 35px;
-  }
-  /* .ExpandedCard > span:nth-of-type(1) {
-    color: white;
-    font-size: 26px;
-    font-weight: bold;
-    text-shadow: 0px 0px 15px white;
-  }
-  .ExpandedCard > span:nth-of-type(2) {
-    color: rgb(236, 236, 236);
-    font-size: 15px;
-  } */
-  
-  .chartContainer {
-    width: 70%;
-  }
+
+.card.open > img {
+  transform: scale(0.7); /* Adjust the scale value for the image */
+}
+
+.card.open .card-detail {
+  opacity: 1;
+  max-height: 1000px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%; /* Adjust the width as needed */
+  max-width: 400px; /* Adjust the maximum width as needed */
+  max-height: 80%; /* Adjust the maximum height as needed */
+  overflow-y: auto; /* Add vertical scroll if necessary */
+  display: flex;
+  justify-content: center;
+  background-color: #fff; /* Adjust the background color as needed */
+  padding: 1rem;
+  box-shadow: 0px 19px 60px rgba(0, 0, 0, 0.08);
+  border-radius: 7px;
+}
 
 
-  .textOF {
-    text-align: center;
-    color: white;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-between;
-  }
-  
-  .titleOF {
-    color: rgb(236, 236, 236);
-    font-size: 15px;
-    color: white;
-    font-size: 26px;
-    font-weight: bold;
-    text-shadow: 0px 0px 15px white;
+.card span:nth-of-type(2) {
+  color: var(--gray);
+  font-size: 16px;
+}
 
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-between;
-  }
+.card > img {
+  transform: scale(0.6);
+  margin-bottom: -2rem;
+  transition: transform 0.3s ease;
+}
 
 
-  @media screen and (max-width: 1200px) {
-    .ExpandedCard {
-      top: 2rem;
-      height: 45vh;
-      left: 6rem;
-    }
-  }
-  
-  @media screen and (max-width: 768px) {
-    .ExpandedCard {
-      top: 8rem;
-      height: 50%;
-      left: 25px;
-      width: 80%;
-    }
-  }
+
+.card-detail {
+  font-size: 14px;
+  opacity: 0;
+  max-height: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
+
+.card-button {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.card-button-wrapper {
+  margin-top: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.c-button {
+  background: #ffffff;
+  box-shadow: 0px 19px 60px rgba(0, 0, 0, 0.08);
+  border-radius: 7px;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  color: #5290fd;
+  transition: transform 0.3s ease;
+}
+
+.c-button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.card.open .c-button {
+  transform: scale(0.95);
+}
