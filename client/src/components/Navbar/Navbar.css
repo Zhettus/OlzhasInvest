@@ -1,9 +1,11 @@
+
 .n-wrapper {
   height: 10vh;
   display: flex;
   justify-content: space-between;
   margin-bottom: 2rem;
   top: 0;
+  color: white;
 }
 .n-left {
   flex: 1;
@@ -11,11 +13,13 @@
   justify-content: left;
   display: flex;
   gap: 2rem;
+  
 }
 
 .n-name {
   font-size: 1.3rem;
   font-weight: bold;
+  color: white;
 }
 .n-right {
   flex: 1;
@@ -23,6 +27,7 @@
   align-items: center;
   justify-content: flex-end;
   font-weight: 400;
+  color: white;
 }
 
 .n-list {
@@ -41,6 +46,9 @@
 
 .n-button {
   flex: 2;
+}
+.n-list > ul li a {
+  color: white; /* Set the text color to white */
 }
 
 @media screen and (max-width: 480px) {
